@@ -106,5 +106,9 @@ def main():
     shutil.copytree(new_tree_path, old_tree_path)
     shutil.rmtree(new_tree_path)
 
+    if mismatched_files or missing_files_old or missing_files_new:
+        print "Something has chamged"
+        sys.exit(1)
+        
 if __name__ == '__main__':
     main()
