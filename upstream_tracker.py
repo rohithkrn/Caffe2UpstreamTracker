@@ -10,6 +10,10 @@ def get_hip_file_path(filepath):
     filename_without_ext, ext = os.path.splitext(filename)
     if "cudnn" in filename:
         hip_name = re.sub(r'cudnn', r'miopen', filename)
+        if filename == "pool_op_cudnn.cu":
+            hip_name = "pool_op_miopen.cc"
+        if filename == "cudnn_wrappers.h":
+            hip_name = "miopen_wrapper.h"
     elif "gpu" in filename_without_ext:
         hip_name = re.sub(r'gpu','hip',filename_without_ext)
         if ext == ".h":
